@@ -1,7 +1,8 @@
-package com.jitusolution.todoapp
+package com.jitusolution.todoapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.jitusolution.todoapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

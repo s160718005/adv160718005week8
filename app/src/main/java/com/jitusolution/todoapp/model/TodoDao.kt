@@ -1,6 +1,7 @@
 package com.jitusolution.todoapp.model
 
 import androidx.room.*
+import java.util.*
 
 @Dao
 interface TodoDao {
@@ -10,11 +11,16 @@ interface TodoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg todo:Todo)
     //suspend ini ada kaitannya dengna corotine aitu bisa di pause dan continue
-    @Query("Select * from todo")
+    @Query("Select * from todo ORDER BY priority DESC")
     suspend fun selectAllTodo():List<Todo>
     //@Query("select * from todoo where uuid= :id AND kolumb = :c")
     @Query("select * from todo where uuid= :id")
     suspend fun selectTodo(id:Int):Todo
+    //untuk update
+    @Query("update todo set title=:title, notes=:notes, priority=:priority where uuid=:uuid")
+    suspend fun update(title:String,notes:String,priority:Int,uuid: Int)
+
+
 
     @Delete
     suspend fun deleteTodo(todo:Todo)

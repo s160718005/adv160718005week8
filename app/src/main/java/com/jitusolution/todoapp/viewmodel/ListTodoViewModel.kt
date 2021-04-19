@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.jitusolution.todoapp.model.Todo
 import com.jitusolution.todoapp.model.TodoDatabase
+import com.jitusolution.todoapp.util.buildDB
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -21,8 +22,9 @@ class ListTodoViewModel(application: Application):AndroidViewModel(application),
     {
         launch{
             //apapun yang di dalam launch ini dilakukand dalam thread terpisah tapi masih punya akses dalam ui
-            val db = Room.databaseBuilder(getApplication(),
-            TodoDatabase::class.java, "tododb").build()
+           // val db = Room.databaseBuilder(getApplication(),
+            //TodoDatabase::class.java, "tododb").build()
+            val db = buildDB(getApplication())
             todoLD.value= db.todoDao().selectAllTodo()
 
         }
@@ -31,8 +33,9 @@ class ListTodoViewModel(application: Application):AndroidViewModel(application),
     fun clearTask(todo:Todo){
         // untuk mendelete task yang mau kita delete
         launch {
-            val db = Room.databaseBuilder(getApplication(),
-                TodoDatabase::class.java, "tododb").build()
+            //val db = Room.databaseBuilder(getApplication(),
+                //TodoDatabase::class.java, "tododb").build()
+            val db = buildDB(getApplication())
             db.todoDao().deleteTodo(todo)
             todoLD.value= db.todoDao().selectAllTodo()
             //delete lalu select all kembali

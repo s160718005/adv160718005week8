@@ -8,4 +8,8 @@
     <string name="Notes" />
     <string name="notes">Notes</string>
     <string name="createtodo">Create Todo</string>
+    <string name="priority">Priority</string>
+    <string name="highpriority">High Priority</string>
+    <string name="mediumpriority">Medium Priority</string>
+    <string name="lowpriority">Low Priority</string>
 </resources>

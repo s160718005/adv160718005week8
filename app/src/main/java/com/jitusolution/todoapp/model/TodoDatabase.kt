@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.jitusolution.todoapp.util.MIGRATION_1_2
 import com.jitusolution.todoapp.util.MIGRATION_2_3
 
-@Database(entities = arrayOf(Todo::class), version = 3)
+@Database(entities = arrayOf(Todo::class), version = 4)
 abstract class TodoDatabase:RoomDatabase() {
     //isinya semua dao yang kalian punya ini kebutulan cuma 1
     abstract fun todoDao():TodoDao
